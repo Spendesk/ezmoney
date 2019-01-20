@@ -1,0 +1,14 @@
+version: '2'
+exclude_patterns:
+  - '**/__tests__'
+  - '/node_modules/**'
+  - '/scripts/**'
+  - '/*.api.ts'
+  - '/jest.config.js'
+plugins:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        typescript:
+          mass_threshold: 140

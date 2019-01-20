@@ -1,0 +1,146 @@
+version: 2.1
+
+workflows:
+  version: 2
+  ci:
+    jobs:
+      - install
+      - validate:
+          requires:
+            - install
+      - build:
+          requires:
+            - validate
+          filters: &only_master
+            branches:
+              only: master
+      - release:
+          requires:
+            - build
+          context: semantic-release
+          filters: *only_master
+
+jobs:
+  install:
+    docker: &default_docker
+      - image: circleci/node:10.15
+        environment:
+          GIT_COMMITTER_NAME: CI
+          GIT_COMMITTER_EMAIL: dev@spendesk.com
+    steps:
+      - checkout
+      - install_node_modules
+      - persist_to_workspace:
+          name: 'Saving the git folder'
+          root: ./.git
+          paths:
+            - .
+  validate:
+    docker: *default_docker
+    steps:
+      - reset_to_current_branch
+      - install_node_modules
+      - run:
+          name: 'Linting the commits'
+          command: yarn commitlint --from master --to $CIRCLE_BRANCH
+      - trust_github
+      - run_on_each_commit:
+          title: 'Validating each commit (linting, testing, API checking)'
+          command: yarn install --frozen-lockfile && yarn validate
+      - store_test_results:
+          path: ./.temp/test-reports
+      - run:
+          name: 'Sending test coverage report to Code Climate'
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter format-coverage ./.temp/test-coverage/lcov.info --input-type lcov --output ./.temp/test-coverage/codeclimate.json
+            ./cc-test-reporter upload-coverage --input ./.temp/test-coverage/codeclimate.json
+  build:
+    docker: *default_docker
+    steps:
+      - reset_to_current_branch
+      - install_node_modules
+      - run:
+          name: 'Building the project'
+          command: yarn build
+      - store_build_artifacts
+  release:
+    docker: *default_docker
+    steps:
+      - reset_to_current_branch
+      - install_node_modules
+      - trust_github
+      - run:
+          name: 'Release package'
+          command: yarn release
+
+commands:
+  run_on_each_commit:
+    description: 'Run a command on each commit between master and $CIRCLE_BRANCH'
+    parameters:
+      title:
+        type: string
+      command:
+        type: string
+    steps:
+      - run:
+          name: '<<parameters.title>>'
+          command: ./.circleci/run-on-each-commit.sh '<<parameters.command>>'
+  reset_to_current_branch:
+    description: 'Moves to $CIRCLE_BRANCH and performs a hard reset'
+    steps:
+      - attach_workspace:
+          name: 'Loading the git folder'
+          at: ./.git
+      - run:
+          name: Moving to $CIRCLE_BRANCH
+          command: git checkout $CIRCLE_BRANCH && git reset --hard $CIRCLE_BRANCH
+  restore_yarn_cache:
+    description: 'Restores the yarn cache'
+    steps:
+      - restore_cache:
+          name: 'Restoring yarn cache'
+          keys:
+            - yarn-cache-{{ checksum "yarn.lock" }}
+            - yarn-cache-
+  save_yarn_cache:
+    description: 'Saves the yarn cache'
+    steps:
+      - save_cache:
+          name: 'Saving yarn cache'
+          paths:
+            - ~/.cache/yarn
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+  install_node_modules:
+    description: 'Installs the node dependencies using yarn'
+    steps:
+      - restore_yarn_cache
+      - run:
+          name: 'Installing node dependencies'
+          command: yarn install --frozen-lockfile
+      - save_yarn_cache
+  trust_github:
+    description: 'Disables strict host key checking for github.com'
+    steps:
+      - run:
+          name: 'Disabling strict host key checking for github.com'
+          command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+  store_build_artifacts:
+    description: 'Stores and persists build artifacts'
+    parameters:
+      folder:
+        type: string
+        default: ./dist
+    steps:
+      - store_artifacts:
+          name: 'Storing build artifacts'
+          path: ./dist
+      - persist_to_workspace:
+          name: 'Saving build artifacts'
+          root: .
+          paths:
+            - ./index.js
+            - ./index.mjs
+            - ./index.d.ts
+            - ./tsdoc-metadata.json
