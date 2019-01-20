@@ -1,0 +1,13 @@
+/index.js
+/index.mjs
+/index.d.ts
+/tsdoc-metadata.json
+/lib
+
+/node_modules
+/.temp
+
+yarn-error.log
+
+/.vscode
+!/.vscode/extensions.json
