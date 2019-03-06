@@ -22,7 +22,7 @@
     "lint": "eslint . --ext=.ts,.tsx",
     "release": "semantic-release",
     "rollup": "cd ./scripts; ./rollup.ts",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "typecheck": "tsc",
     "update-tests-data": "cd ./scripts; ./update-tests-data.ts",
     "validate": "cd ./scripts; ./validate.sh"
