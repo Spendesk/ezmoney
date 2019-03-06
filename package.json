@@ -22,7 +22,7 @@
     "lint": "eslint . --ext=.ts,.tsx",
     "release": "semantic-release",
     "rollup": "cd ./scripts; ./rollup.ts",
-    "test": "NODE_ICU_DATA=./node_modules/icu4c-data jest --passWithNoTests",
+    "test": "NODE_ICU_DATA=./node_modules/icu4c-data jest",
     "typecheck": "tsc",
     "validate": "cd ./scripts; ./validate.sh"
   },

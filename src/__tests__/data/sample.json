@@ -1,0 +1,412 @@
+[
+  {
+    "amount": -2782560580665343,
+    "currency": "AED",
+    "precision": 5
+  },
+  {
+    "amount": -4228691997016063,
+    "currency": "ALL",
+    "precision": 5
+  },
+  {
+    "amount": 1988437566152705,
+    "currency": "AMD",
+    "precision": 0
+  },
+  {
+    "amount": 7506455980086785,
+    "currency": "BND",
+    "precision": 2
+  },
+  {
+    "amount": 6193859644170241,
+    "currency": "BOB",
+    "precision": 4
+  },
+  {
+    "amount": 49,
+    "currency": "BOV",
+    "precision": 0
+  },
+  {
+    "amount": -5710149210019839,
+    "currency": "BSD",
+    "precision": 10
+  },
+  {
+    "amount": 429313303236609,
+    "currency": "BYN",
+    "precision": 10
+  },
+  {
+    "amount": 28,
+    "currency": "CAD",
+    "precision": 12
+  },
+  {
+    "amount": 7840089943416833,
+    "currency": "CHE",
+    "precision": 1
+  },
+  {
+    "amount": 38,
+    "currency": "CHF",
+    "precision": 11
+  },
+  {
+    "amount": -4177141249507327,
+    "currency": "CHW",
+    "precision": 10
+  },
+  {
+    "amount": -7438250002964479,
+    "currency": "CUC",
+    "precision": 1
+  },
+  {
+    "amount": 3993013908703233,
+    "currency": "CUP",
+    "precision": 5
+  },
+  {
+    "amount": 8551123606917121,
+    "currency": "CZK",
+    "precision": 3
+  },
+  {
+    "amount": -5963182362913791,
+    "currency": "DOP",
+    "precision": 13
+  },
+  {
+    "amount": 2757246894205953,
+    "currency": "EGP",
+    "precision": 10
+  },
+  {
+    "amount": 42,
+    "currency": "EUR",
+    "precision": 0
+  },
+  {
+    "amount": -4515549161159679,
+    "currency": "FJD",
+    "precision": 1
+  },
+  {
+    "amount": -35,
+    "currency": "GBP",
+    "precision": 2
+  },
+  {
+    "amount": 8496491955461121,
+    "currency": "GIP",
+    "precision": 1
+  },
+  {
+    "amount": 48,
+    "currency": "GMD",
+    "precision": 11
+  },
+  {
+    "amount": 5047279238748161,
+    "currency": "GNF",
+    "precision": 0
+  },
+  {
+    "amount": 52,
+    "currency": "GTQ",
+    "precision": 1
+  },
+  {
+    "amount": -31,
+    "currency": "HKD",
+    "precision": 0
+  },
+  {
+    "amount": -474777374072831,
+    "currency": "HKD",
+    "precision": 2
+  },
+  {
+    "amount": 8285194708212737,
+    "currency": "HRK",
+    "precision": 14
+  },
+  {
+    "amount": -13,
+    "currency": "HUF",
+    "precision": 13
+  },
+  {
+    "amount": -5216606367487103,
+    "currency": "IQD",
+    "precision": 3
+  },
+  {
+    "amount": -44,
+    "currency": "JPY",
+    "precision": 13
+  },
+  {
+    "amount": 3022738361980929,
+    "currency": "KGS",
+    "precision": 2
+  },
+  {
+    "amount": 49,
+    "currency": "KHR",
+    "precision": 0
+  },
+  {
+    "amount": 6635283001790465,
+    "currency": "KMF",
+    "precision": 1
+  },
+  {
+    "amount": -4061230738223103,
+    "currency": "LBP",
+    "precision": 0
+  },
+  {
+    "amount": -5620839543521279,
+    "currency": "LSL",
+    "precision": 15
+  },
+  {
+    "amount": 38,
+    "currency": "MAD",
+    "precision": 10
+  },
+  {
+    "amount": -7169500625321983,
+    "currency": "MDL",
+    "precision": 4
+  },
+  {
+    "amount": 3236842304305153,
+    "currency": "MKD",
+    "precision": 2
+  },
+  {
+    "amount": 1014039475486721,
+    "currency": "MOP",
+    "precision": 14
+  },
+  {
+    "amount": 2200490234688001,
+    "currency": "MUR",
+    "precision": 12
+  },
+  {
+    "amount": 6,
+    "currency": "MXN",
+    "precision": 2
+  },
+  {
+    "amount": 19,
+    "currency": "MYR",
+    "precision": 9
+  },
+  {
+    "amount": -15,
+    "currency": "NGN",
+    "precision": 10
+  },
+  {
+    "amount": -3,
+    "currency": "NOK",
+    "precision": 0
+  },
+  {
+    "amount": -5887958685118463,
+    "currency": "NPR",
+    "precision": 6
+  },
+  {
+    "amount": -4869704601344511,
+    "currency": "NZD",
+    "precision": 14
+  },
+  {
+    "amount": 7040135696551937,
+    "currency": "OMR",
+    "precision": 1
+  },
+  {
+    "amount": 5752875907960833,
+    "currency": "PGK",
+    "precision": 13
+  },
+  {
+    "amount": 6391126052834305,
+    "currency": "PHP",
+    "precision": 0
+  },
+  {
+    "amount": -38,
+    "currency": "PLN",
+    "precision": 12
+  },
+  {
+    "amount": 10,
+    "currency": "QAR",
+    "precision": 13
+  },
+  {
+    "amount": -5119939323120639,
+    "currency": "RON",
+    "precision": 15
+  },
+  {
+    "amount": 17,
+    "currency": "RSD",
+    "precision": 2
+  },
+  {
+    "amount": -24,
+    "currency": "RUB",
+    "precision": 15
+  },
+  {
+    "amount": -699109211138047,
+    "currency": "RWF",
+    "precision": 14
+  },
+  {
+    "amount": 1495986025433601,
+    "currency": "SAR",
+    "precision": 5
+  },
+  {
+    "amount": -630340850763775,
+    "currency": "SEK",
+    "precision": 0
+  },
+  {
+    "amount": -909807786932223,
+    "currency": "SGD",
+    "precision": 0
+  },
+  {
+    "amount": 4606793261826561,
+    "currency": "SLL",
+    "precision": 4
+  },
+  {
+    "amount": 7275293982973953,
+    "currency": "STN",
+    "precision": 1
+  },
+  {
+    "amount": -10,
+    "currency": "SVC",
+    "precision": 0
+  },
+  {
+    "amount": -7137318253391615,
+    "currency": "SYP",
+    "precision": 12
+  },
+  {
+    "amount": 8,
+    "currency": "SZL",
+    "precision": 1
+  },
+  {
+    "amount": -5388013965986303,
+    "currency": "THB",
+    "precision": 2
+  },
+  {
+    "amount": 34,
+    "currency": "TJS",
+    "precision": 13
+  },
+  {
+    "amount": 8554914759538433,
+    "currency": "TOP",
+    "precision": 8
+  },
+  {
+    "amount": -39,
+    "currency": "TTD",
+    "precision": 10
+  },
+  {
+    "amount": 7104579679231489,
+    "currency": "TWD",
+    "precision": 2
+  },
+  {
+    "amount": 314,
+    "currency": "USD",
+    "precision": 2
+  },
+  {
+    "amount": 7767385427454977,
+    "currency": "UYW",
+    "precision": 13
+  },
+  {
+    "amount": 7840862806700033,
+    "currency": "UZS",
+    "precision": 3
+  },
+  {
+    "amount": 32,
+    "currency": "VND",
+    "precision": 1
+  },
+  {
+    "amount": -1009176351535103,
+    "currency": "WST",
+    "precision": 14
+  },
+  {
+    "amount": -8283170250238975,
+    "currency": "XAF",
+    "precision": 6
+  },
+  {
+    "amount": 45,
+    "currency": "XAG",
+    "precision": 11
+  },
+  {
+    "amount": -44,
+    "currency": "XBA",
+    "precision": 2
+  },
+  {
+    "amount": -41,
+    "currency": "XBB",
+    "precision": 3
+  },
+  {
+    "amount": -3073607292094463,
+    "currency": "XBC",
+    "precision": 3
+  },
+  {
+    "amount": 43,
+    "currency": "XBD",
+    "precision": 1
+  },
+  {
+    "amount": 7937464920714241,
+    "currency": "XCD",
+    "precision": 11
+  },
+  {
+    "amount": -6230235868258303,
+    "currency": "XDR",
+    "precision": 1
+  },
+  {
+    "amount": -3940589007639295,
+    "currency": "ZMW",
+    "precision": 11
+  }
+]
