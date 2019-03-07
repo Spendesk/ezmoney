@@ -2897,10 +2897,10 @@ iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
-icu4c-data@^0.62.0:
-  version "0.62.2"
-  resolved "https://registry.yarnpkg.com/icu4c-data/-/icu4c-data-0.62.2.tgz#908acc9240ef6e0534fa977f23b0867add89a231"
-  integrity sha512-XeGQzD3LAFprTRJ+IJZky7gUEk330neU8oo+xUT7LH08JFLTC1Eh22LiyrKIJPiZKV3w5Nq/cj8QyFWe18VDtw==
+icu4c-data@^0.63.0:
+  version "0.63.2"
+  resolved "https://registry.yarnpkg.com/icu4c-data/-/icu4c-data-0.63.2.tgz#d89f215592069ab087bf211d5b1b7e8e9f5bcfe8"
+  integrity sha512-vT6/47CcBzDemlhRzkL7dZLoNvuUWjjiuKZHMt5T4dbkKAqLBh7ZQ33GU13ecC/aIcMlIdBOqtF4uIYTgWML4Q==
 
 iferr@^0.1.5:
   version "0.1.5"
