@@ -1,7 +1,6 @@
 import { MonetaryValue } from './monetary-value';
 import { assertValidMonetaryValue } from './utils/assertions';
 import { unsafeToNumber } from './coercions';
-import { abs } from './utils/math';
 
 /**
  * @public
@@ -144,9 +143,26 @@ export function unsafeFormat<C extends string>(
   locales?: string | string[],
   formatOptions: MonetaryValueFormatOptions = {},
 ): string {
-  const decimalValue = unsafeToNumber(monetaryValue);
-  const formattedMonetaryValue = Number.prototype.toLocaleString.call(
-    abs(decimalValue),
+  const {
+    signDisplay = SignDisplay.Auto,
+    currencySign = CurrencySign.Standard,
+  } = formatOptions;
+  if (
+    signDisplay === SignDisplay.Auto &&
+    currencySign === CurrencySign.Standard
+  ) {
+    return nativeFormat(monetaryValue, locales, formatOptions);
+  }
+  return experimentalFormat(monetaryValue, locales, formatOptions);
+}
+
+export function nativeFormat<C extends string>(
+  monetaryValue: MonetaryValue<C>,
+  locales: string | string[] | undefined,
+  formatOptions: Intl.NumberFormatOptions,
+): string {
+  return Number.prototype.toLocaleString.call(
+    unsafeToNumber(monetaryValue),
     locales,
     {
       localeMatcher: formatOptions.localeMatcher,
@@ -158,14 +174,59 @@ export function unsafeFormat<C extends string>(
       maximumFractionDigits: monetaryValue.precision,
     },
   );
-  if (isSignRequired(formatOptions.signDisplay, decimalValue)) {
+}
+
+function experimentalFormat<C extends string>(
+  monetaryValue: MonetaryValue<C>,
+  locales: string | string[] | undefined,
+  formatOptions: MonetaryValueFormatOptions,
+): string {
+  const { amount } = monetaryValue;
+  const formattedMonetaryValue = nativeFormat(
+    monetaryValue,
+    locales,
+    formatOptions,
+  );
+  if (isSignRequired(formatOptions.signDisplay, amount)) {
     return putTheSign(
       formattedMonetaryValue,
-      decimalValue,
+      amount,
       formatOptions.currencySign,
     );
   }
-  return formattedMonetaryValue;
+  return removeTheSign(formattedMonetaryValue, amount);
+}
+
+function putTheSign(
+  formattedValue: string,
+  amount: number,
+  currencySign: CurrencySign = CurrencySign.Standard,
+): string {
+  if (amount >= 0) {
+    return `+${formattedValue}`;
+  }
+  if (currencySign === CurrencySign.Accounting) {
+    return `(${formattedValue.replace('-', '')})`;
+  }
+  return formattedValue;
+}
+
+function removeTheSign(formattedValue: string, amount: number): string {
+  if (amount >= 0) {
+    return formattedValue;
+  }
+  return formattedValue.replace('-', '');
+}
+
+function isSignRequired(
+  signDisplay: SignDisplay = SignDisplay.Auto,
+  amount: number,
+): boolean {
+  return (
+    signDisplay === SignDisplay.Always ||
+    (signDisplay === SignDisplay.Auto && amount < 0) ||
+    (signDisplay === SignDisplay.ExceptZero && amount !== 0)
+  );
 }
 
 /**
@@ -179,30 +240,5 @@ export function isFormatSupported(): boolean {
     typeof Intl === 'object' &&
     Intl !== null &&
     typeof Intl.NumberFormat === 'function'
-  );
-}
-
-function putTheSign(
-  formattedValue: string,
-  decimalValue: number,
-  currencySign: CurrencySign = CurrencySign.Standard,
-): string {
-  if (decimalValue > 0) {
-    return `+${formattedValue}`;
-  }
-  if (currencySign === CurrencySign.Accounting) {
-    return `(${formattedValue})`;
-  }
-  return `-${formattedValue}`;
-}
-
-function isSignRequired(
-  signDisplay: SignDisplay = SignDisplay.Auto,
-  decimalValue: number,
-): boolean {
-  return (
-    signDisplay === SignDisplay.Always ||
-    (signDisplay === SignDisplay.Auto && decimalValue < 0) ||
-    (signDisplay === SignDisplay.ExceptZero && decimalValue !== 0)
   );
 }

@@ -2,6 +2,7 @@
 import * as jsum from 'jsum';
 
 import { MonetaryValue } from '../../monetary-value';
+import { pow10 } from '../../utils/math';
 
 import sample from '../data/sample.json';
 import callsData from '../data/number-tolocalestring-calls.json';
@@ -22,6 +23,8 @@ const locales = [
   'pt-BR',
   'ru-RU',
   'zh-CN',
+  'ar-EG',
+  'he-IL',
 ];
 
 const currencyDisplays = ['code', 'name', 'symbol'];
@@ -43,7 +46,7 @@ export function buildCallsMap(): ToLocaleStringCallData {
     currencyDisplay: string,
   ): ToLocaleStringCallData {
     const { amount, currency, precision } = monetaryValue;
-    const number = Math.abs(amount / 10 ** precision);
+    const number = amount / pow10(precision);
     const args: ToLocaleStringArgs = [
       locale,
       {

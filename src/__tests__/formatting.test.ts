@@ -1,4 +1,9 @@
-import { isFormatSupported, format, unsafeFormat } from '../formatting';
+import {
+  isFormatSupported,
+  format,
+  unsafeFormat,
+  nativeFormat,
+} from '../formatting';
 import { MonetaryValue } from '../monetary-value';
 
 import { shimToLocaleString } from './utils/number-tolocalestring-memo';
@@ -60,6 +65,8 @@ describe('unsafeFormat()', () => {
     'pt-BR',
     'ru-RU',
     'zh-CN',
+    'ar-EG',
+    'he-IL',
   ];
 
   function populateFormatCalls(): void {
@@ -97,8 +104,20 @@ describe('unsafeFormat()', () => {
   });
 
   for (const locale of locales) {
-    it(`returns a string consistent with the snapshot for the locale ${locale} and all combinations of options`, () => {
-      expect(formatCalls[locale]).toMatchSnapshot();
+    describe(`given the locale ${locale}`, () => {
+      it('returns a string consistent with the snapshot on all combinations of options', () => {
+        expect(formatCalls[locale]).toMatchSnapshot();
+      });
+
+      it("returns the same string as the native localization function when signDisplay is 'auto' and currencySign is 'standard'", () => {
+        for (const call of formatCalls[locale]) {
+          for (const currencyDisplay of currencyDisplays) {
+            expect(call.formatting[`${currencyDisplay}_auto_standard`]).toBe(
+              nativeFormat(call.monetaryValue, locale, { currencyDisplay }),
+            );
+          }
+        }
+      });
     });
   }
 });
