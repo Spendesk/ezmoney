@@ -32,6 +32,22 @@ describe('multiply()', () => {
       ),
     );
   });
+  it('returns the same monetary value as unsafeMultiply() without specify default params', () => {
+    fc.assert(
+      fc.property(
+        fc.smallMonetaryValue(),
+        fc.integer(-1e5, 1e5),
+        (mv, factor) => {
+          fc.pre(factor !== 0);
+          expect(
+            multiply(mv, factor),
+          ).toBeIdenticalToMonetaryValue(
+            unsafeMultiply(mv, factor),
+          );
+        },
+      ),
+    );
+  });
   it('throws a RangeError when the monetary value is not valid', () => {
     fc.assert(
       fc.property(

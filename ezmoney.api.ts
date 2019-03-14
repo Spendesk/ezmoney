@@ -109,7 +109,7 @@ interface MonetaryValueFormatOptions {
 }
 
 // @public
-declare function multiply<C extends string>(monetaryValue: MonetaryValue<C>, factor: number, factorPrecision: number, roundingFunction?: RoundingFunction): MonetaryValue<C>;
+declare function multiply<C extends string>(monetaryValue: MonetaryValue<C>, factor: number, factorPrecision?: number, roundingFunction?: RoundingFunction): MonetaryValue<C>;
 
 // @public
 declare function negate<C extends string>(monetaryValue: MonetaryValue<C>): MonetaryValue<C>;
@@ -231,7 +231,7 @@ declare function unsafeMaximum<C extends string>(monetaryValue1: MonetaryValue<C
 declare function unsafeMinimum<C extends string>(monetaryValue1: MonetaryValue<C>, monetaryValue2: MonetaryValue<C>): MonetaryValue<C>;
 
 // @public
-declare function unsafeMultiply<C extends string>(monetaryValue: MonetaryValue<C>, factor: number, factorPrecision: number, roundingFunction?: RoundingFunction): MonetaryValue<C>;
+declare function unsafeMultiply<C extends string>(monetaryValue: MonetaryValue<C>, factor: number, factorPrecision?: number, roundingFunction?: RoundingFunction): MonetaryValue<C>;
 
 // @public
 declare function unsafeNegate<C extends string>(monetaryValue: MonetaryValue<C>): MonetaryValue<C>;

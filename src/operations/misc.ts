@@ -17,14 +17,14 @@ import { allocate as numberAllocate, sum, pow10 } from '../utils/math';
  * See {@link unsafeMultiply} for an implementation that does not validate the arguments.
  * @param monetaryValue - The monetary value to multiply
  * @param factor - The coefficient of the number that `monetaryValue` will be multiplied by; must be a safe integer
- * @param factorPrecision - The precision of the number that `monetaryValue` will be multiplied by
+ * @param factorPrecision - The precision of the number that `monetaryValue` will be multiplied by (by default `0` is used)
  * @param roundingFunction - The rounding method to apply to the result's amount (by default {@link roundHalfToEven | round half-to-even}); see {@link RoundingFunction}
  * @returns a `MonetaryValue` whose decimal value is the product of the ones of `monetaryValue` and `factor / (10 ** factorPrecision)`, with the same `currency` as `monetaryValue`
  */
 export function multiply<C extends string>(
   monetaryValue: MonetaryValue<C>,
   factor: number,
-  factorPrecision: number,
+  factorPrecision: number = 0,
   roundingFunction: RoundingFunction = roundHalfToEven,
 ): MonetaryValue<C> {
   assertValidMonetaryValue(monetaryValue);
@@ -46,14 +46,14 @@ export function multiply<C extends string>(
  * The operation may cause overflows or imprecisions.
  * See {@link multiply} for an implementation that validates the arguments.
  * @param factor - The coefficient of the number that `monetaryValue` will be multiplied by
- * @param factorPrecision - The precision of the number that `monetaryValue` will be multiplied by
+ * @param factorPrecision - The precision of the number that `monetaryValue` will be multiplied by (by default `0` is used)
  * @param roundingFunction - The rounding method to apply to the result's amount (by default {@link roundHalfToEven | round half-to-even}); see {@link RoundingFunction}
  * @returns a `MonetaryValue` whose decimal value is the product of the ones of `monetaryValue` and `factor / (10 ** factorPrecision)`, with the same `currency` as `monetaryValue`
  */
 export function unsafeMultiply<C extends string>(
   monetaryValue: MonetaryValue<C>,
   factor: number,
-  factorPrecision: number,
+  factorPrecision: number = 0,
   roundingFunction: RoundingFunction = roundHalfToEven,
 ): MonetaryValue<C> {
   return unsafeIntegerDivide(
