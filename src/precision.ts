@@ -96,7 +96,10 @@ export function unsafeSetPrecision<C extends string>(
 ): MonetaryValue<C> {
   if (monetaryValue.precision >= precision) {
     const divider = pow10(monetaryValue.precision - precision);
-    const wholePart = Math.floor(monetaryValue.amount / divider);
+    const wholePart =
+      monetaryValue.amount < 0
+        ? Math.ceil(monetaryValue.amount / divider)
+        : Math.floor(monetaryValue.amount / divider);
     const numerator = monetaryValue.amount % divider;
     return {
       amount: roundingFunction(wholePart, numerator, divider),

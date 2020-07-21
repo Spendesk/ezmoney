@@ -136,6 +136,15 @@ describe('unsafeSetPrecision()', () => {
       precision: 1,
     });
   });
+  it('returns a monetary value (negative) with a matching amount up to the relevant digit when provided a lower precision', () => {
+    expect(
+      unsafeSetPrecision({ amount: -314, currency: 'EUR', precision: 2 }, 1),
+    ).toBeIdenticalToMonetaryValue({
+      amount: -31,
+      currency: 'EUR',
+      precision: 1,
+    });
+  });
   it('returns a monetary value with a matching amount up to the relevant digit, rounded according to the provided rounding function, when provided a lower precision', () => {
     expect(
       unsafeSetPrecision(
