@@ -2,14 +2,26 @@
   "name": "ezmoney",
   "version": "0.0.0-development",
   "description": "A library to safely manipulate monetary values",
-  "keywords": ["currency", "ezmoney", "formatting", "monetary value", "money"],
+  "keywords": [
+    "currency",
+    "ezmoney",
+    "formatting",
+    "monetary value",
+    "money"
+  ],
   "homepage": "https://github.com/Spendesk/ezmoney#readme",
   "bugs": "https://github.com/Spendesk/ezmoney/issues",
   "repository": "github:Spendesk/ezmoney",
   "license": "MIT",
   "author": "Yacine Hmito <yacine@spendesk.com>",
-  "contributors": ["Yacine Hmito <yacine@spendesk.com>"],
-  "files": ["index.js", "index.d.ts", "index.mjs"],
+  "contributors": [
+    "Yacine Hmito <yacine@spendesk.com>"
+  ],
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "index.mjs"
+  ],
   "main": "./index.js",
   "module": "./index.mjs",
   "typings": "./index.d.ts",
@@ -54,5 +66,9 @@
   },
   "resolutions": {
     "@microsoft/api-extractor/**/typescript": "^3.3.3333"
+  },
+  "volta": {
+    "node": "12.21.0",
+    "yarn": "1.22.10"
   }
 }
