@@ -72,7 +72,7 @@ describe('unsafeFormat()', () => {
   function populateFormatCalls(): void {
     for (const locale of locales) {
       formatCalls[locale] = sample.map((monetaryValue) => {
-        let formatting: { [key: string]: string } = Object.create(null);
+        const formatting: { [key: string]: string } = Object.create(null);
         for (const currencyDisplay of currencyDisplays) {
           for (const signDisplay of signDisplays) {
             for (const currencySign of currencySigns) {
@@ -94,7 +94,7 @@ describe('unsafeFormat()', () => {
     }
   }
 
-  let originalToLocaleString = Number.prototype.toLocaleString;
+  const originalToLocaleString = Number.prototype.toLocaleString;
   beforeAll(() => {
     Number.prototype.toLocaleString = shimToLocaleString;
     populateFormatCalls();

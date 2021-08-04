@@ -11,7 +11,7 @@ type Entity = {
 export const alphabeticCodes = extractCodes(iso4217Data);
 
 function extractCodes(entities: Entity[]): string[] {
-  const set = new Set();
+  const set = new Set<string>();
   const { length } = entities;
   for (let i = 0; i < length; ++i) {
     set.add(entities[i].alphabeticCode);

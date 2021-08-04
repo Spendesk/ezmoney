@@ -272,7 +272,7 @@ describe('unsafeFromString()', () => {
         const trailingZeros = Array(precision)
           .fill(0)
           .join('');
-        let str = `${currency} 42.${trailingZeros}`;
+        const str = `${currency} 42.${trailingZeros}`;
         expect(unsafeFromString(str)).toHaveProperty('precision', precision);
       }),
     );
