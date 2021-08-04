@@ -1,4 +1,4 @@
-import diff from 'jest-diff';
+import { diff } from 'jest-diff';
 import { MonetaryValue, isMonetaryValue } from '../../monetary-value';
 import { unsafeIdentical } from '../../comparisons';
 
