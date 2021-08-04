@@ -64,7 +64,7 @@ export function isMonetaryValue(arg: unknown): arg is MonetaryValue {
 export function create<C extends string>(
   amount: number,
   currency: C,
-  precision: number = 0,
+  precision = 0,
 ): MonetaryValue<C> {
   const monetaryValue = unsafeCreate(amount, currency, precision);
   assertValidMonetaryValue(monetaryValue);
@@ -85,7 +85,7 @@ export function create<C extends string>(
 export function unsafeCreate<C extends string>(
   amount: number,
   currency: C,
-  precision: number = 0,
+  precision = 0,
 ): MonetaryValue<C> {
   return { amount, currency, precision };
 }

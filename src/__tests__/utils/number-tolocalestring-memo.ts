@@ -1,4 +1,3 @@
-// @ts-ignore
 import * as jsum from 'jsum';
 
 import { MonetaryValue } from '../../monetary-value';

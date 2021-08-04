@@ -21,7 +21,7 @@ import { RoundingFunction, roundHalfToEven } from './roundings';
 export function fromNumber<C extends string>(
   number: number,
   currency: C,
-  precision: number = 0,
+  precision = 0,
   roundingFunction: RoundingFunction = roundHalfToEven,
 ): MonetaryValue<C> {
   // Does not use unsafeFromNumber because we need to validate mid-computation
@@ -49,7 +49,7 @@ export function fromNumber<C extends string>(
 export function unsafeFromNumber<C extends string>(
   number: number,
   currency: C,
-  precision: number = 0,
+  precision = 0,
   roundingFunction: RoundingFunction = roundHalfToEven,
 ): MonetaryValue<C> {
   const scaled = number * pow10(precision);

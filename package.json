@@ -45,10 +45,12 @@
     "@microsoft/api-extractor": "^7.0.23",
     "@types/jest": "^24.0.9",
     "@types/jest-diff": "^20.0.1",
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
-    "@typescript-eslint/parser": "^1.4.2",
+    "@types/jsum": "^0.1.0",
+    "@types/node": "^14.17.9",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
     "change-case": "^3.1.0",
-    "eslint": "^5.15.1",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^5.0.0",
     "eslint-plugin-jest": "^22.3.0",
     "fast-check": "^1.12.0",
@@ -61,11 +63,11 @@
     "rollup-plugin-typescript2": "^0.21.0",
     "semantic-release": "^15.13.3",
     "ts-jest": "^24.0.0",
-    "ts-node": "^8.0.2",
-    "typescript": "^3.3.3333"
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
   },
   "resolutions": {
-    "@microsoft/api-extractor/**/typescript": "^3.3.3333"
+    "@microsoft/api-extractor/**/typescript": "^4.3.5"
   },
   "volta": {
     "node": "14.17.4",

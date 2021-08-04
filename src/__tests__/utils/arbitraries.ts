@@ -72,7 +72,7 @@ export function currency(options: CurrencyOptions = {}): Arbitrary<string> {
 }
 
 // Limiting to 15 because 10 ** 16 > Number.MAX_SAFE_INTEGER
-export function precision(max: number = 15): Arbitrary<number> {
+export function precision(max = 15): Arbitrary<number> {
   return integer(0, max);
 }
 
