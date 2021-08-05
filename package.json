@@ -57,7 +57,7 @@
     "jest-diff": "^27.0.6",
     "jest-junit": "^12.2.0",
     "jsum": "^0.1.4",
-    "prettier": "^1.16.4",
+    "prettier": "^2.0.0",
     "rollup": "^2.55.1",
     "rollup-plugin-typescript2": "^0.30.0",
     "semantic-release": "^15.13.3",
