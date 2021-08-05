@@ -1,12 +1,14 @@
 # Ezmoney
 
+[![CircleCI](https://circleci.com/gh/Spendesk/ezmoney/tree/master.svg?style=svg)](https://circleci.com/gh/Spendesk/ezmoney/tree/master)
+
 **A library to safely manipulate monetary values.**
 
 Ezmoney (/ˈizi'mʌni\/) helps you operate on monetary values, compare them, format them, and more. It features:
 
 - **Pure functions**: Ezmoney only exports side-effect free functions. This makes the API simple and enables dead code elimination (i.e. tree-shaking).
 - **Safety first**: Thanks to TypeScript, Ezmoney is fully type-safe. Additionally, all the standard functions validate their arguments for the properties that TypeScript cannot verify.
-- **Opt-in performance boost**: All functions have an *unsafe* variant that forgoes the validation of the arguments. Use it when you are confident in the correctness of your code and need that extra bit of oomph.
+- **Opt-in performance boost**: All functions have an _unsafe_ variant that forgoes the validation of the arguments. Use it when you are confident in the correctness of your code and need that extra bit of oomph.
 
 ## Setup
 
@@ -100,11 +102,11 @@ These comparisons are only allowed on monetary values that have the same currenc
 ```javascript
 Ezmoney.identical(
   { amount: 42, currency: 'USD', precision: 2 },
-  { amount: 420, currency: 'USD', precision: 3 }
+  { amount: 420, currency: 'USD', precision: 3 },
 ); // Returns false
 Ezmoney.equivalent(
   { amount: 42, currency: 'USD', precision: 2 },
-  { amount: 420, currency: 'USD', precision: 3 }
+  { amount: 420, currency: 'USD', precision: 3 },
 ); // Returns true
 ```
 
@@ -134,16 +136,13 @@ The `format` function uses the native `Intl` API to format a monetary value with
 If your environment properly supports `format`, you can use it as the following example illustrates:
 
 ```javascript
-Ezmoney.format(
-  { amount: 314, currency: 'USD', precision: 2 },
-  'en-US',
-  { currencyDisplay: 'symbol' },
-); // returns '$3.14'
-Ezmoney.format(
-  { amount: 42, currency: 'EUR', precision: 0 },
-  'fr-FR',
-  { currencyDisplay: 'name', signDisplay: 'always' },
-); // returns '+42 euros'
+Ezmoney.format({ amount: 314, currency: 'USD', precision: 2 }, 'en-US', {
+  currencyDisplay: 'symbol',
+}); // returns '$3.14'
+Ezmoney.format({ amount: 42, currency: 'EUR', precision: 0 }, 'fr-FR', {
+  currencyDisplay: 'name',
+  signDisplay: 'always',
+}); // returns '+42 euros'
 ```
 
 The returned string always displays as many decimal places as the precision.
@@ -158,7 +157,7 @@ If you are using TypeScript, the function `isMonetaryValue` can be used as a typ
 
 Preconditions that cannot be checked by TypeScript are validated at runtime. For example, `compare` always ensures that the two monetary values provided have the same currency; if they don't, it will throw.
 
-This incurs a small performance cost; if you want your code to be as fast as possible, you can trade a little bit of safety for more speed by using the *unsafe* functions.
+This incurs a small performance cost; if you want your code to be as fast as possible, you can trade a little bit of safety for more speed by using the _unsafe_ functions.
 
 Operations, comparisons and other similar functions each have an alternative implementation that displays the same behavior in normal circumstances but do not perform any runtime checks.
 They are all prefixed by `unsafe` and do not guarantee correctness if any of the provided arguments are invalid. For example:
@@ -197,10 +196,12 @@ In the meantime, feel free to open an issue for bugs and features requests or su
 There is [a very good article](https://frontstuff.io/how-to-handle-monetary-values-in-javascript) that explains why you would want to use a library to handle monetary values in JavaScript.
 
 Basically, JavaScript follows the IEEE 754 standard made for floating-point arithmetic. Numbers all have a double precision (64 bit). This is dangerous because:
+
 - non-integers cannot be precisely represented;
 - integers outside of a certain range are not "safe", i.e. a single value could represent multiple possible numbers.
 
 When you are dealing with money, accuracy is important. To avoid the pitfalls of floating-point arithmetic, you need to:
+
 - always deal with integers, even for decimal values;
 - make sure that the integers stay in the safe range.
 
@@ -209,6 +210,7 @@ This is exactly what Ezmoney provides (among other things).
 ## Prior art
 
 A non-exhaustive list of libraries that solve problems similar to Ezmoney:
+
 - [Dinero.js](https://npmjs.com/package/dinero.js)
 - [money-works](https://www.npmjs.com/package/money-works)
 - [es-money](https://www.npmjs.com/package/es-money)
