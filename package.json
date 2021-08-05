@@ -68,7 +68,7 @@
     "@microsoft/api-extractor/**/typescript": "^3.3.3333"
   },
   "volta": {
-    "node": "12.21.0",
-    "yarn": "1.22.10"
+    "node": "14.17.4",
+    "yarn": "1.22.11"
   }
 }
