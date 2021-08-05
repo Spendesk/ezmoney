@@ -80,7 +80,11 @@ export const enum CurrencySign {
  * @public
  * The options that can be passed to {@link format} or {@link unsafeFormat} to tweak to formatting.
  */
-export interface MonetaryValueFormatOptions {
+export interface MonetaryValueFormatOptions
+  extends Omit<
+    Intl.NumberFormatOptions,
+    'style' | 'currency' | 'minimumFractionDigits' | 'maximumFractionDigits'
+  > {
   /**
    * The locale matching algorithm to use.
    * For more information, see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_negotiation).
@@ -90,10 +94,6 @@ export interface MonetaryValueFormatOptions {
    * Determines how to display the currency part of the string.
    */
   currencyDisplay?: CurrencyDisplay;
-  /**
-   * Whether to use grouping separators, such as thousands separators or thousand/lakh/crore separators.
-   */
-  useGrouping?: boolean;
   /**
    * @alpha
    * Determines in which situation the sign should be displayed.
@@ -165,9 +165,7 @@ export function nativeFormat<C extends string>(
     unsafeToNumber(monetaryValue),
     locales,
     {
-      localeMatcher: formatOptions.localeMatcher,
-      currencyDisplay: formatOptions.currencyDisplay,
-      useGrouping: formatOptions.useGrouping,
+      ...formatOptions,
       style: 'currency',
       currency: monetaryValue.currency,
       minimumFractionDigits: monetaryValue.precision,
