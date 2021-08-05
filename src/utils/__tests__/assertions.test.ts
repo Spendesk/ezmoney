@@ -96,7 +96,7 @@ describe('assertStrictlyPositiveSafeInteger()', () => {
 describe('assertValidPrecision()', () => {
   it('throws a RangeError when the precision is a positive integer greater than 15', () => {
     fc.assert(
-      fc.property(fc.integer(16, Number.MAX_VALUE), (precision) => {
+      fc.property(fc.double(16, Number.MAX_VALUE), (precision) => {
         expect(() => assertValidPrecision(precision)).toThrow(RangeError);
       }),
     );
@@ -122,7 +122,7 @@ describe('assertValidMonetaryValue()', () => {
   });
   it('throws a RangeError when the precision is a positive integer greater than 15', () => {
     fc.assert(
-      fc.property(fc.integer(16, Number.MAX_VALUE), (precision) => {
+      fc.property(fc.double(16, Number.MAX_VALUE), (precision) => {
         const mv = {
           amount: 314,
           currency: 'EUR',

@@ -1,7 +1,6 @@
 import * as _fc from 'fast-check';
 import * as arbitraries from './utils/arbitraries';
 import { toBeIdenticalToMonetaryValue } from './utils/matchers';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { MonetaryValue } from '../monetary-value';
 
 const _fcplus = Object.assign({}, _fc, arbitraries);

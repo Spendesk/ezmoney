@@ -29,8 +29,8 @@ export function number(
 
 export function unsafeInteger(): Arbitrary<number> {
   return oneof(
-    integer(-Number.MAX_VALUE, Number.MIN_SAFE_INTEGER - 1),
-    integer(Number.MAX_SAFE_INTEGER + 2, Number.MAX_VALUE),
+    double(-Number.MAX_VALUE, Number.MIN_SAFE_INTEGER - 1),
+    double(Number.MAX_SAFE_INTEGER + 2, Number.MAX_VALUE),
   );
 }
 
@@ -68,7 +68,7 @@ export function currency(options: CurrencyOptions = {}): Arbitrary<string> {
       'Max length of currency arbitrary is not an integer or not greater than or equal to 1',
     );
   }
-  return unicodeString(1, maxLength);
+  return unicodeString({ minLength: 1, maxLength });
 }
 
 // Limiting to 15 because 10 ** 16 > Number.MAX_SAFE_INTEGER
@@ -79,8 +79,8 @@ export function precision(max = 15): Arbitrary<number> {
 export function invalidPrecision(): Arbitrary<number> {
   return oneof(
     double().filter((n) => !Number.isInteger(n)),
-    integer(-Number.MAX_VALUE, -1),
-    integer(16, Number.MAX_VALUE),
+    double(-Number.MAX_VALUE, -1),
+    double(16, Number.MAX_VALUE),
     oneof(constant(NaN), constant(-Infinity), constant(Infinity)),
   );
 }
@@ -219,5 +219,5 @@ function first<T>(array: T[]): T {
 }
 
 function element<T>(array: T[]): Arbitrary<T> {
-  return subarray(array, 1, 1).map(first);
+  return subarray(array, { minLength: 1, maxLength: 1 }).map(first);
 }
