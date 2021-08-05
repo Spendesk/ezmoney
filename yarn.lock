@@ -4332,10 +4332,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-jsum@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/jsum/-/jsum-0.1.4.tgz#9a40809b000e49ff8418ada7b7e9279cc4498ffa"
-  integrity sha512-2SgwwEwnj/RmRHBRV2pOwUKJ6suYJhSd9K61xv7gjWwvN2XKtzJVr3WJZrvPcqEQUkM2yF4OzUTXqJvf6i6uBg==
+jsum@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/jsum/-/jsum-1.0.1.tgz#c9989b40cb771e34344aaa9ff0633e3d532bbe01"
+  integrity sha512-fwTVzNvqYUPPOW3j0LXc70PasncUROLX4FRx8sgQqe73BmmbhO8AyzexWCY6KB+jBxVSKsObqiPs4dJgplOejg==
 
 just-diff-apply@^3.0.0:
   version "3.0.0"
