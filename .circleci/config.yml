@@ -23,7 +23,7 @@ workflows:
 jobs:
   install:
     docker: &default_docker
-      - image: cimg/node:14.17.4
+      - image: cimg/node:16.11.1
         environment:
           GIT_COMMITTER_NAME: CI
           GIT_COMMITTER_EMAIL: dev@spendesk.com
