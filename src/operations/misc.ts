@@ -105,7 +105,7 @@ export function unsafeIntegerDivide<C extends string>(
   divider: number,
   roundingFunction: RoundingFunction = roundHalfToEven,
 ): MonetaryValue<C> {
-  const wholePart = Math.floor(monetaryValue.amount / divider);
+  const wholePart = Math.trunc(monetaryValue.amount / divider);
   const numerator = monetaryValue.amount % divider;
   return {
     amount: roundingFunction(wholePart, numerator, divider),

@@ -1,5 +1,6 @@
 import { sum, pow10, allocate as numberAllocate } from '../../utils/math';
 import { unsafeAdd } from '../binary';
+import { negate } from '../unary';
 
 import {
   integerDivide,
@@ -11,7 +12,7 @@ import {
   allocate,
   unsafeAllocate,
 } from '../misc';
-import { roundTowardsZero } from '../../roundings';
+import { roundHalfToEven, roundTowardsZero } from '../../roundings';
 
 describe('multiply()', () => {
   it('returns the same monetary value as unsafeMultiply()', () => {
@@ -138,7 +139,7 @@ describe('unsafeMultiply()', () => {
             unsafeMultiply(mv, factor, factorPrecision, roundTowardsZero),
           ).toHaveProperty(
             'amount',
-            Math.floor((mv.amount * factor) / pow10(factorPrecision)),
+            Math.trunc((mv.amount * factor) / pow10(factorPrecision)),
           );
         },
       ),
@@ -280,8 +281,24 @@ describe('unsafeIntegerDivide()', () => {
         fc.pre(divider !== 0);
         expect(
           unsafeIntegerDivide(mv, divider, roundTowardsZero),
-        ).toHaveProperty('amount', Math.floor(mv.amount / divider));
+        ).toHaveProperty('amount', Math.trunc(mv.amount / divider));
       }),
+    );
+  });
+  it('returns the same absolute monetary value when working with negative and positive values', () => {
+    fc.assert(
+      fc.property(
+        fc.monetaryValue(),
+        fc.integer(),
+        (mv, divider) => {
+          fc.pre(divider !== 0);
+          expect(
+            Math.abs(unsafeIntegerDivide(mv, divider, roundHalfToEven).amount),
+          ).toEqual(
+            Math.abs(unsafeIntegerDivide(negate(mv), divider, roundHalfToEven).amount),
+          )
+        },
+      ),
     );
   });
 });
@@ -451,7 +468,7 @@ describe('unsafeDivide()', () => {
             unsafeDivide(mv, divider, dividerPrecision, roundTowardsZero),
           ).toHaveProperty(
             'amount',
-            Math.floor((mv.amount * pow10(dividerPrecision)) / divider),
+            Math.trunc((mv.amount * pow10(dividerPrecision)) / divider),
           );
         },
       ),
