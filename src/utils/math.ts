@@ -89,7 +89,7 @@ export function allocate(
   let i = 0;
   while (i < length - 1) {
     const share = (weights[i] / total) * n + crumbs;
-    const wholeShare = Math.floor(share);
+    const wholeShare = Math.trunc(share);
     crumbs = share - wholeShare;
     sum += wholeShare;
     shares[i] = wholeShare;

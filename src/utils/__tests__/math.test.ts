@@ -117,4 +117,7 @@ describe('allocate()', () => {
   it('returns an array that distributes the provided number to each weight, using the negative weights to increase the amount that can be allocated', () => {
     expect(allocate(100, [-5, 15], 10)).toEqual([-50, 150]);
   });
+  it('returns the same distributions with negative and positive values', () => {
+    expect(allocate(21, [1, 5, 4], 10).map((value) => Math.abs(value))).toEqual(allocate(-21, [1, 5, 4], 10).map((value) => Math.abs(value)))
+  });
 });
