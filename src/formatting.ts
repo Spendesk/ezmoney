@@ -57,7 +57,7 @@ export const enum SignDisplay {
   /**
    * Always display the sign, except when the amount is zero.
    */
-  ExceptZero = 'except-zero',
+  ExceptZero = 'exceptZero',
 }
 
 /**
