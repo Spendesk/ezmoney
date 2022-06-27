@@ -157,7 +157,7 @@ declare function setPrecision<C extends string>(monetaryValue: MonetaryValue<C>,
 declare const enum SignDisplay {
     Always = "always",
     Auto = "auto",
-    ExceptZero = "except-zero",
+    ExceptZero = "exceptZero",
     Never = "never"
 }
 
