@@ -10,11 +10,7 @@ export const localeMatchers: LocaleMatcher[] = [
   LocaleMatcher.Lookup,
 ];
 
-export const currencyDisplays: CurrencyDisplay[] = [
-  CurrencyDisplay.Code,
-  CurrencyDisplay.Name,
-  CurrencyDisplay.Symbol,
-];
+export const currencyDisplays: CurrencyDisplay[] = ['code', 'name', 'symbol'];
 
 export const signDisplays: SignDisplay[] = [
   SignDisplay.Always,

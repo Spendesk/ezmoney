@@ -37,17 +37,17 @@ export {
 
 export {
   LocaleMatcher,
-  CurrencyDisplay,
+  type CurrencyDisplay,
   SignDisplay,
   CurrencySign,
-  MonetaryValueFormatOptions,
+  type MonetaryValueFormatOptions,
   format,
   unsafeFormat,
   isFormatSupported,
 } from './formatting';
 
 export {
-  MonetaryValue,
+  type MonetaryValue,
   isMonetaryValue,
   create,
   unsafeCreate,
@@ -90,7 +90,7 @@ export {
 } from './precision';
 
 export {
-  RoundingFunction,
+  type RoundingFunction,
   roundDown,
   roundUp,
   roundTowardsZero,

@@ -21,11 +21,19 @@ declare const enum Comparison {
 declare function create<C extends string>(amount: number, currency: C, precision?: number): MonetaryValue<C>;
 
 // @public
-declare const enum CurrencyDisplay {
-    Code = "code",
-    Name = "name",
-    Symbol = "symbol"
-}
+declare type CurrencyDisplay = 
+/**
+ * Display the currency as a localized currency symbol, such as €.
+ */
+'symbol'
+/**
+ * Display the currency as the ISO code from ISO4217.
+ */
+ | 'code'
+/**
+ * Display the currency as a localized currency name.
+ */
+ | 'name';
 
 // @alpha
 declare const enum CurrencySign {

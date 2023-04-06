@@ -1,6 +1,7 @@
 import { MonetaryValue } from './monetary-value';
 import { assertValidMonetaryValue } from './utils/assertions';
 import { unsafeToNumber } from './coercions';
+import { currencyDisplays } from './__tests__/utils/enum-values';
 
 /**
  * @public
@@ -20,21 +21,23 @@ export const enum LocaleMatcher {
 /**
  * @public
  * Determines how to display the currency.
+ * - symbol: as a localized currency symbol, such as €.
+ * - code: as the ISO code from ISO4217.
+ * - name: as a localized currency name
  */
-export const enum CurrencyDisplay {
+export type CurrencyDisplay =
   /**
    * Display the currency as a localized currency symbol, such as €.
    */
-  Symbol = 'symbol',
+  | 'symbol'
   /**
    * Display the currency as the ISO code from ISO4217.
    */
-  Code = 'code',
+  | 'code'
   /**
    * Display the currency as a localized currency name.
    */
-  Name = 'name',
-}
+  | 'name';
 
 /**
  * @alpha

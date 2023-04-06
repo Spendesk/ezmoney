@@ -4,6 +4,7 @@
     "noEmit": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "isolatedModules": false,
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es2017",
