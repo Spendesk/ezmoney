@@ -5,8 +5,7 @@
   "keywords": [
     "currency",
     "ezmoney",
-    "formatting",
-    "monetary value",
+    "formatting", "monetary value",
     "money"
   ],
   "homepage": "https://github.com/Spendesk/ezmoney#readme",
@@ -27,7 +26,7 @@
   "typings": "./index.d.ts",
   "scripts": {
     "apicheck": "cd ./scripts; ./compile.ts --apicheck",
-    "build": "yarn cleanup && yarn compile && yarn rollup",
+    "build": "npm run cleanup && npm run compile && npm run rollup",
     "cleanup": "cd ./scripts; ./cleanup.sh",
     "commitlint": "commitlint",
     "compile": "cd ./scripts; ./compile.ts",
@@ -69,7 +68,7 @@
     "@microsoft/api-extractor/**/typescript": "^4.7.4"
   },
   "volta": {
-    "node": "14.17.4",
-    "yarn": "1.22.11"
+    "node": "18.16.1",
+    "npm": "9.5.1"
   }
 }
