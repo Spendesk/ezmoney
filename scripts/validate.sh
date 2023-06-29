@@ -5,13 +5,13 @@ set -e
 cd $(dirname "$0")/..
 
 if [ -z "$CI" ]; then
-  yarn lint
-  yarn typecheck
-  yarn test --ci
-  yarn apicheck
+  npm run lint
+  npm run typecheck
+  npm test --ci
+  npm run apicheck
 else
-  yarn lint --quiet
-  yarn typecheck
-  yarn test --ci --runInBand --coverage
-  yarn apicheck
+  npm run lint --quiet
+  npm run typecheck
+  npm test --ci --runInBand --coverage
+  npm run apicheck
 fi

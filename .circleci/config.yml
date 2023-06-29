@@ -42,11 +42,11 @@ jobs:
       - install_node_modules
       - run:
           name: 'Linting the commits'
-          command: yarn commitlint --from master --to $CIRCLE_BRANCH
+          command: npm run commitlint --from master --to $CIRCLE_BRANCH
       - trust_github
       - run_on_each_commit:
           title: 'Validating each commit (linting, testing, API checking)'
-          command: yarn install --frozen-lockfile && yarn validate
+          command: npm install && npm run validate
       - store_test_results:
           path: ./.temp/test-reports
       - run:
@@ -63,7 +63,7 @@ jobs:
       - install_node_modules
       - run:
           name: 'Building the project'
-          command: yarn build
+          command: npm run build
       - persist_build_artifacts
   release:
     docker: *default_docker
@@ -74,7 +74,7 @@ jobs:
       - trust_github
       - run:
           name: 'Release package'
-          command: yarn release
+          command: npm run release
 
 commands:
   run_on_each_commit:
